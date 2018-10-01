@@ -1,0 +1,106 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-02 16:29+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#: includes/buddypress-profile-privacy-admin.php:9
+msgid ""
+"A new admin setting has been added to Simple BuddyPress Profile Privacy. You "
+"can now allow members to hide themselves from the directory page. "
+msgstr ""
+
+#: includes/buddypress-profile-privacy-admin.php:10
+msgid "Click here to update the profile settings"
+msgstr ""
+
+#: includes/buddypress-profile-privacy-admin.php:55
+msgid "Allow registered members to hide from the directory"
+msgstr ""
+
+#. Used by BP when listing components (eg in the Dashboard)
+#: includes/buddypress-profile-privacy.php:16
+msgid "BP Profile Privacy"
+msgstr ""
+
+#: includes/buddypress-profile-privacy.php:35
+msgid "Private"
+msgstr ""
+
+#: includes/buddypress-profile-privacy.php:43
+msgid "Friends Only"
+msgstr ""
+
+#: includes/buddypress-profile-privacy.php:68
+#, php-format
+msgid " Use the button below to send a friend request to %s"
+msgstr ""
+
+#: includes/buddypress-profile-privacy.php:88
+#: includes/buddypress-profile-privacy.php:108
+msgid "Privacy Settings"
+msgstr ""
+
+#: includes/buddypress-profile-privacy.php:140
+msgid "Who can view your profile?"
+msgstr ""
+
+#: includes/buddypress-profile-privacy.php:142
+msgid "Everyone"
+msgstr ""
+
+#: includes/buddypress-profile-privacy.php:143
+msgid "Only Logged In Users"
+msgstr ""
+
+#: includes/buddypress-profile-privacy.php:145
+msgid "Only Friends"
+msgstr ""
+
+#: includes/buddypress-profile-privacy.php:149
+msgid "Hide My Profile from Member Directory"
+msgstr ""
+
+#: includes/buddypress-profile-privacy.php:151
+msgid "Yes"
+msgstr ""
+
+#: includes/buddypress-profile-privacy.php:152
+msgid "No"
+msgstr ""
+
+#: includes/buddypress-profile-privacy.php:155
+msgid "Save"
+msgstr ""
+
+#. Name of the plugin
+msgid "Simple Buddypress Profile Privacy"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Allow each user to decide if everyone, only logged in users or only friends "
+"can see their profile tabs."
+msgstr ""
+
+#. URI of the plugin
+msgid "http://justin-hansen.com/buddypress-profile-privacy"
+msgstr ""
+
+#. Author of the plugin
+msgid "Justin Hansen"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "http://justin-hansen.com"
+msgstr ""

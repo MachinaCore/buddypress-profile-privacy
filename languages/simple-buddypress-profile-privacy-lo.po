@@ -1,0 +1,105 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple BuddyPress Profile Privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-02 16:29+0000\n"
+"PO-Revision-Date: 2017-10-02 16:44+0000\n"
+"Last-Translator: jhansen <fencer04@gmail.com>\n"
+"Language-Team: Lao\n"
+"Language: lo\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#: includes/buddypress-profile-privacy-admin.php:9
+msgid ""
+"A new admin setting has been added to Simple BuddyPress Profile Privacy. You "
+"can now allow members to hide themselves from the directory page. "
+msgstr ""
+
+#: includes/buddypress-profile-privacy-admin.php:10
+msgid "Click here to update the profile settings"
+msgstr "ຄລິກບ່ອນນີ້ເພື່ອອັບເດດການຕັ້ງຄ່າໂປຣໄຟລ໌"
+
+#: includes/buddypress-profile-privacy-admin.php:55
+msgid "Allow registered members to hide from the directory"
+msgstr " ອະນຸຍາດໃຫ້ສະມາຊິກໄດ້ເລືອກທີ່ຈະບໍ່ປະກົດຢູ່ໄດເຣັກຕໍຣີສະມາຊິກ"
+
+#. Used by BP when listing components (eg in the Dashboard)
+#: includes/buddypress-profile-privacy.php:16
+msgid "BP Profile Privacy"
+msgstr "ຄວາມເປັນສ່ວນຕົວໂປຣໄຟລ໌ບັດດີ້ເພຣສ"
+
+#: includes/buddypress-profile-privacy.php:35
+msgid "Private"
+msgstr "ສ່ວນຕົວ"
+
+#: includes/buddypress-profile-privacy.php:43
+msgid "Friends Only"
+msgstr "ສະເພາະໝູ່ເທົ່ານັ້ນ"
+
+#: includes/buddypress-profile-privacy.php:68
+#, php-format
+msgid " Use the button below to send a friend request to %s"
+msgstr "ໃຊ້ປຸ່ມຂ້າງລຸ່ມນີ້ເພື່ອນສົ່ງຄຳຂໍເປັນໝູ່ໄປ"
+
+#: includes/buddypress-profile-privacy.php:88
+#: includes/buddypress-profile-privacy.php:108
+msgid "Privacy Settings"
+msgstr "ຕັ້ງຄ່າຄວາມເປັນສ່ວນຕົວ"
+
+#: includes/buddypress-profile-privacy.php:140
+msgid "Who can view your profile?"
+msgstr "ໃຜສາມາດເຂົ້າເບິ່ງໂປຣໄຟລ໌ຂອງທ່ານໄດ້?"
+
+#: includes/buddypress-profile-privacy.php:142
+msgid "Everyone"
+msgstr "ທຸກຄົນ"
+
+#: includes/buddypress-profile-privacy.php:143
+msgid "Only Logged In Users"
+msgstr "ສະເພາະສະມາຊິກທີ່ລັອກອິນ"
+
+#: includes/buddypress-profile-privacy.php:145
+msgid "Only Friends"
+msgstr "ສະເພາະໝູ່"
+
+#: includes/buddypress-profile-privacy.php:149
+msgid "Hide My Profile from Member Directory"
+msgstr " ເຊື່ອງໂປຣໄຟລ໌ຂອງຂ້ອຍຈາກໄດເຣັກຕໍຣີສະມາຊິກ"
+
+#: includes/buddypress-profile-privacy.php:151
+msgid "Yes"
+msgstr "ຕົກລົງ"
+
+#: includes/buddypress-profile-privacy.php:152
+msgid "No"
+msgstr "ບໍ່"
+
+#: includes/buddypress-profile-privacy.php:155
+msgid "Save"
+msgstr ""
+
+#. Name of the plugin
+msgid "Simple Buddypress Profile Privacy"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Allow each user to decide if everyone, only logged in users or only friends "
+"can see their profile tabs."
+msgstr ""
+
+#. URI of the plugin
+msgid "http://justin-hansen.com/buddypress-profile-privacy"
+msgstr ""
+
+#. Author of the plugin
+msgid "Justin Hansen"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "http://justin-hansen.com"
+msgstr ""
