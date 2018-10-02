@@ -24,6 +24,10 @@ function sbpp04_include() {
     define( "SBPP04_PRIVACY_SETTING_KEY", "bpp_profile_privacy");
     define( "SBPP04_HIDE_DIRECTORY_KEY", "bpp_hide_directory" );
     define( "SBPP04_ADMIN_HIDE_DIRECTORY_KEY", "sbpp04-hide-directory" );
+    define( "SBPP04_ADMIN_HIDE_DIRECTORY_AS_DEFAULT_KEY", "sbpp04-hide-directory-as-default" );
+    define( "SBPP04_ADMIN_HIDE_PROFILE_DEFAULT_KEY", "sbpp04-hide-profile-default" );
+    
+
     define( "SBPP04_ADMIN_NOTIFICATION_HIDDEN_KEY", "sbpp04-update-notice-hidden" );
     define( "SBPP04_FRIENDS_ACTIVE", bp_is_active( 'friends' ) );
 
@@ -47,6 +51,16 @@ function sbpp04_admin_enqueue(){
     wp_enqueue_script( 'simple-buddypress-profile-privacy-admin', plugins_url( 'js/simple-buddypress-profile-privacy-admin.js', __FILE__), array( 'jquery' ), '0.7', true );
 }
 add_action( 'admin_enqueue_scripts', 'sbpp04_admin_enqueue' );
+
+
+
+function sbppShowErrorMsg( $content ) {
+    $msg_id = isset($_GET['msg']);
+    if ($msg_id) {
+        echo "<div>".$_GET['msg']."</div></br>";
+    }
+    return $content;
+}
 
 /*
  * The below functions are here because they need access to AJAX.
@@ -85,20 +99,39 @@ function sbpp04_hide_from_search( $query_string = false, $object = false ){
     return $query_string;
 }
 add_filter( 'bp_ajax_querystring', 'sbpp04_hide_from_search', 20, 2 );
-
+add_filter( 'the_content', 'sbppShowErrorMsg' , 100);
 /*
  * Reusable function to query members that want to be hidden from directory and search
  */
 function sbpp04_get_hidden_members(){
+    
     //Get list of users who want their profile hidden from the directory.
-    $args = array(
-        'meta_query' => array(
-            array(
-                'key' => SBPP04_HIDE_DIRECTORY_KEY,
-                'value' => 'Yes'
+    if( bp_get_option( SBPP04_ADMIN_HIDE_DIRECTORY_AS_DEFAULT_KEY ) ){
+        $args = array(
+            'meta_query' => array(
+                'relation' => 'OR',
+                array(
+                    'key' => SBPP04_HIDE_DIRECTORY_KEY,
+                    'value' => 'Yes'
+                ),
+                array(
+                    'key' => SBPP04_HIDE_DIRECTORY_KEY,
+                    'compare' => 'NOT EXISTS'
+                )
             )
-        )
-    );
+        );
+    } else {
+        $args = array(
+            'meta_query' => array(
+                array(
+                    'key' => SBPP04_HIDE_DIRECTORY_KEY,
+                    'value' => 'Yes'
+                )
+            )
+        );
+    }
+	
+	
     $exclude_query = new WP_User_Query( $args );
 
     return $exclude_query;

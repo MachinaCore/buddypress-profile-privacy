@@ -163,28 +163,31 @@ function sbpp04_privacy_screen_content() {
 function sbpp04_privacy_check(){
 	//If site admin then the profile will display no matter what the settings are.
 	if( !is_super_admin() ){
-		$curr_privacy = get_user_meta( bp_displayed_user_id(), SBPP04_PRIVACY_SETTING_KEY, true);
+        $curr_privacy = get_user_meta( bp_displayed_user_id(), SBPP04_PRIVACY_SETTING_KEY, true);
+        //If not manually set use SBPP04_VIEW_FRIENDS as default
+        if ($curr_privacy == NULL){
+            $curr_privacy = bp_get_option(SBPP04_ADMIN_HIDE_PROFILE_DEFAULT_KEY);
+        }
 		switch( $curr_privacy ) {
 			//Only show profile if user is friends with profile being displayed and the privacy template isn't already showing.
 			case SBPP04_VIEW_FRIENDS:
 			    //Check to see if friends component is active. If admin turns it off after member sets to friend only it will be blocked no matter what.
-                if( SBPP04_FRIENDS_ACTIVE ){
+                if( SBPP04_FRIENDS_ACTIVE && is_user_logged_in() ){
                     $is_friend = bp_is_friend( bp_displayed_user_id() );
                     if( $is_friend != 'is_friend' && !bp_is_my_profile() && !bp_is_current_component( 'bpp' ) ) {
-                        wp_redirect( bp_displayed_user_domain() . 'profile-privacy/sbpp-hidden' );
-                        exit();
+                        sbpp04_privacy_forbidden_redirect("Only%20Friends%20can%20view%20this&20Profile");
                     }else{
                         sbpp04_privacy_redirect( $is_friend );
                     }
                 }else{
-                    sbpp04_privacy_redirect();
+                    sbpp04_privacy_forbidden_redirect("This%20Profile%20is%20private");
                 }
 				break;
 			//Only show profile if the user is logged in. Otherwise redirect to register page.
 			case SBPP04_VIEW_LOGGED_IN:
 				if( !is_user_logged_in() && bp_is_user() ) {
-					wp_redirect( wp_registration_url() );
-					exit();
+                    sbpp04_privacy_forbidden_redirect("This%20Profile%20is%20private");
+                    exit();
 				}else{
 					sbpp04_privacy_redirect();
                 }
@@ -219,5 +222,18 @@ function sbpp04_privacy_redirect( $is_friend = '' ){
         bp_core_remove_nav_item( 'profile-privacy' );
         wp_redirect( bp_displayed_user_domain() );
         exit();
+    }
+}
+
+//Redirect to to current page with error - Not elegant but working
+function sbpp04_privacy_forbidden_redirect( $msg = '' ){
+    if ( !bp_is_current_component( 'bpp' ) ) {
+        bp_core_remove_nav_item( 'profile-privacy' );
+        if (bp_displayed_user_id()!=0 ){
+            wp_redirect("/members/?msg=".$msg ); 
+            exit;
+        }
+    } else {
+        exit;
     }
 }

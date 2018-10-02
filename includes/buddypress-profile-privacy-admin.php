@@ -34,6 +34,22 @@ function sbpp04_plugin_admin_settings() {
         'bp_xprofile'
     );
 
+    add_settings_field(
+        SBPP04_ADMIN_HIDE_DIRECTORY_AS_DEFAULT_KEY,
+        __( 'Hide from Directory as default', SBPP04_PLUGIN_DOMAIN ),
+        'sbpp04_hide_directory_as_default_settings',
+        'buddypress',
+        'bp_xprofile'
+    );    
+
+    add_settings_field(
+        SBPP04_ADMIN_HIDE_PROFILE_DEFAULT_KEY,
+        __( 'Profile visibility if not set by user', SBPP04_PLUGIN_DOMAIN ),
+        'sbpp04_hide_profile_default_settings',
+        'buddypress',
+        'bp_xprofile'
+    );        
+
     /* This is where you add your setting to BuddyPress ones */
     register_setting(
         'buddypress',
@@ -53,6 +69,27 @@ function sbpp04_hide_directory_settings() {
     ?>
     <input id="<?php echo SBPP04_ADMIN_HIDE_DIRECTORY_KEY ?>" name="<?php echo SBPP04_ADMIN_HIDE_DIRECTORY_KEY ?>" type="checkbox" value="1" <?php checked( $sbpp04_hide_directory ); ?> />
     <label for="<?php echo SBPP04_ADMIN_HIDE_DIRECTORY_KEY ?>"><?php _e( 'Allow registered members to hide from the directory', 'simple-buddypress-profile-privacy' ); ?></label>
+    <?php
+}
+
+function sbpp04_hide_directory_as_default_settings() {
+    $sbpp04_hide_directory = bp_get_option( SBPP04_ADMIN_HIDE_DIRECTORY_AS_DEFAULT_KEY );
+    ?>
+    <input id="<?php echo SBPP04_ADMIN_HIDE_DIRECTORY_AS_DEFAULT_KEY ?>" name="<?php echo SBPP04_ADMIN_HIDE_DIRECTORY_AS_DEFAULT_KEY ?>" type="checkbox" value="1" <?php checked( $sbpp04_hide_directory ); ?> />
+    <label for="<?php echo SBPP04_ADMIN_HIDE_DIRECTORY_AS_DEFAULT_KEY ?>"><?php _e( 'Hide members from the directory as deault value', 'simple-buddypress-profile-privacy' ); ?></label>
+    <?php
+}
+
+function sbpp04_hide_profile_default_settings() {
+    $sbpp04_hide_directory = bp_get_option( SBPP04_ADMIN_HIDE_PROFILE_DEFAULT_KEY );
+    ?>
+    <select name="<?php echo SBPP04_ADMIN_HIDE_PROFILE_DEFAULT_KEY ?>">
+        <option value="<?php echo esc_attr( SBPP04_VIEW_EVERYONE ); ?>"<?php if( $sbpp04_hide_directory == SBPP04_VIEW_EVERYONE ) echo ' selected="selected"' ?>><?php _e ('Everyone', 'simple-buddypress-profile-privacy'); ?></option>
+        <option value="<?php echo esc_attr( SBPP04_VIEW_LOGGED_IN ); ?>"<?php if( $sbpp04_hide_directory == SBPP04_VIEW_LOGGED_IN ) echo ' selected="selected"' ?>><?php _e ('Only Logged In Users', 'simple-buddypress-profile-privacy'); ?></option>
+        <?php if( SBPP04_FRIENDS_ACTIVE ): ?>
+            <option value="<?php echo esc_attr( SBPP04_VIEW_FRIENDS ); ?>"<?php if( $sbpp04_hide_directory == SBPP04_VIEW_FRIENDS ) echo ' selected="selected"' ?>><?php _e ('Only Friends', 'simple-buddypress-profile-privacy'); ?></option>
+        <?php endif; ?>
+    </select>
     <?php
 }
 
